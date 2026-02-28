@@ -1,0 +1,17 @@
+# Terraform
+# run terraform init to download plugin and dependencies
+.terraform/
+# lock file local only
+.terraform.lock.hcl
+# personal data
+terraform.tfvars
+# state files with aws account info
+*.tfstate
+*.tfstate.backup
+# lambda zip - auto packaged by terraform apply
+*.zip
+# logs when running terraform plan
+plan.txt
+
+#issues reference
+issue_references.md

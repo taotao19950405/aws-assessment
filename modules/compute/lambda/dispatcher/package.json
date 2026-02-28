@@ -1,0 +1,7 @@
+{
+  "name": "dispatcher",
+  "version": "1.0.0",
+  "dependencies": {
+    "@aws-sdk/client-ecs": "^3.0.0"
+  }
+}
