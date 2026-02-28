@@ -119,6 +119,30 @@ API_URL_EU=$(terraform output -raw api_url_eu_west_1) \
 node scripts/test.js
 ```
 
+### Verify logs
+
+after running the test, check CloudWatch logs to confirm SNS messages were published, author used aws cli to check the logs, also make sure you use proper time gap when you run the command to verify test, 5m is used here.
+```bash
+# lambda greeter - us-east-1
+aws logs tail /aws/lambda/unleash-us-east-1-greeter --region us-east-1 --since 5m
+
+# lambda greeter - eu-west-1
+aws logs tail /aws/lambda/unleash-eu-west-1-greeter --region eu-west-1 --since 5m
+
+# ecs dispatcher - us-east-1
+aws logs tail /ecs/unleash-us-east-1-sns-publisher --region us-east-1 --since 5m
+
+# ecs dispatcher - eu-west-1
+aws logs tail /ecs/unleash-eu-west-1-sns-publisher --region eu-west-1 --since 5m
+```
+
+a successful publish will show a `MessageId` in the logs:
+aws logs tail /aws/lambda/unleash-us-east-1-greeter --region us-east-1 --since 5m | grep "MessageId"
+aws logs tail /ecs/unleash-us-east-1-sns-publisher --region us-east-1 --since 5m | grep "MessageId"
+aws logs tail /aws/lambda/unleash-eu-west-1-greeter --region eu-west-1 --since 5m | grep "MessageId"
+aws logs tail /ecs/unleash-eu-west-1-sns-publisher --region eu-west-1 --since 5m | grep "MessageId"
+
+
 ### What the test does
 
 1. authenticates with Cognito to retrieve a JWT token
