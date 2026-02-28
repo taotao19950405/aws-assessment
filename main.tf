@@ -36,7 +36,7 @@ module "compute_us_east_1" {
   cognito_user_pool_arn = module.cognito.user_pool_arn
   cognito_user_pool_id  = module.cognito.user_pool_id
   cognito_client_id     = module.cognito.client_id
-  sns_topic_arn = var.sns_topic_arn
+  sns_topic_arn         = var.sns_topic_arn
   test_email            = var.test_email
   github_repo           = var.github_repo
 

@@ -30,9 +30,9 @@ output "test_sns_arn" {
 # add iam policy only for testing when deploy_test_sns = 1, when its not test we do not want this sns topic open to the role
 # allow ecs task roles to publish to test topic when testing
 resource "aws_iam_role_policy" "ecs_test_sns_us" {
-  count  = var.deploy_test_sns
-  name   = "test-sns-publish-us"
-  role   = "unleash-us-east-1-ecs-task-role"
+  count = var.deploy_test_sns
+  name  = "test-sns-publish-us"
+  role  = "unleash-us-east-1-ecs-task-role"
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -47,9 +47,9 @@ resource "aws_iam_role_policy" "ecs_test_sns_us" {
 }
 
 resource "aws_iam_role_policy" "ecs_test_sns_eu" {
-  count  = var.deploy_test_sns
-  name   = "test-sns-publish-eu"
-  role   = "unleash-eu-west-1-ecs-task-role"
+  count = var.deploy_test_sns
+  name  = "test-sns-publish-eu"
+  role  = "unleash-eu-west-1-ecs-task-role"
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -65,9 +65,9 @@ resource "aws_iam_role_policy" "ecs_test_sns_eu" {
 
 # allow lambda roles to publish to test topic when testing
 resource "aws_iam_role_policy" "lambda_test_sns_us" {
-  count  = var.deploy_test_sns
-  name   = "test-sns-publish-lambda-us"
-  role   = "unleash-us-east-1-lambda-exec"
+  count = var.deploy_test_sns
+  name  = "test-sns-publish-lambda-us"
+  role  = "unleash-us-east-1-lambda-exec"
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -82,9 +82,9 @@ resource "aws_iam_role_policy" "lambda_test_sns_us" {
 }
 
 resource "aws_iam_role_policy" "lambda_test_sns_eu" {
-  count  = var.deploy_test_sns
-  name   = "test-sns-publish-lambda-eu"
-  role   = "unleash-eu-west-1-lambda-exec"
+  count = var.deploy_test_sns
+  name  = "test-sns-publish-lambda-eu"
+  role  = "unleash-eu-west-1-lambda-exec"
 
   policy = jsonencode({
     Version = "2012-10-17"
