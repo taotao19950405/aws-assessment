@@ -12,6 +12,7 @@ terraform.tfvars
 *.zip
 # logs when running terraform plan
 plan.txt
-
-#issues reference
-issue_references.md
+#issues reference for personal reference
+issue_references.mdtfplan
+#tfplan 
+tfplantfplan
